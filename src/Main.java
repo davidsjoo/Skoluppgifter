@@ -21,7 +21,7 @@ public class Main {
         //Vi börjar funktionen med att återställa sum (Summan av alla tal) samt digits så att dessa inte påverkar resultatet av det nya personummret
         digits.clear();
         int sum = 0;
-        //Då alla giltiga personnummer i sverige är 10 siffror (12 om man inkluderar 19 / 20) kan vi göra en "early exit" och strunta i att köra resten av funktionen (return avbryter funktioner)
+        //Då alla giltiga personnummer i sverige är 10 siffror (12 om man inkluderar 19 / 20) kan vi göra en "early exit" ifall antalet inte stämmer och strunta i att köra resten av funktionen (return avbryter funktioner)
         //"pn" står för personnummer och är en String som skickas in i funktionen som ett argument
         //Längd kollas även i main funktionen men behövs här med för att kunna testa programmet direkt mot verify funktionen.
         if(pn.length() != 10) {
@@ -30,7 +30,7 @@ public class Main {
         //Då är det dags att kolla igenom våran input lite nogrannare, eftersom vi kollade ovan vet vi att det finns 10 tecken i Stringen pn
         //Och kan därför kolla position 0 till 9 utan att riskera någon error att vi försöker kolla upp ett objekt som inte finns.
         for (int i = 0; i < 10; i++) {
-            //Vi börjar med att kolla om tecknet faktiskt är en siffra imellan 0 och 9, annars utnjyttjar vi återigen "early access" och avslutar funktionen
+            //Vi börjar med att kolla om tecknet faktiskt är en siffra imellan 0 och 9, annars utnjyttjar vi återigen "early exit" och avslutar funktionen
             if(!Character.isDigit(pn.charAt(i))) {
                 return false;
             }
