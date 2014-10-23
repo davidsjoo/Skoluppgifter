@@ -43,20 +43,14 @@ public class Main {
             int temp = digits.get(i);
             //Beroende på om talet är jämnt eller inte ska det gångras med 1 eller 2, då  temp * 1 fortfarande är samma sak som temp behöver vi bara bry oss om temp * 2.
             if((i % 2) == 0) temp = temp * 2;
-            //Den här raden kan se rätt kladdig ut och svår att förstå, men vi kollar helt enkelt om temp är större än 9, om temp är större än 9 omvandlar i talet till en String
-            //När talet väl är en String tar vi andra siffran i talet, det vill säga 7 om temp vore 17, 5 om temp vore 15 osv. Vi omvandlar detta till ett heltal igen och adderar ytterligare 1
-            //Om du vill veta varför vi gör såhär står en förklaring i materialt vi fick ifrån henrik.
-            if(temp > 9) temp = Integer.valueOf(Integer.toString(temp).substring(1)) + 1;
+            //Om temp är över tar vi bort 9 från temp, annars låter vi det vara.
+            temp = (temp > 9) ? temp - 9 : temp;
             //Vi uppdaterar sedan sum med vårat nya värde, sum += temp betyder samma sak som sum = sum + temp.
             sum += temp;
         }
         //Nu har vi loopat igenom alla våra tal och har en summa, denna delar vi med 10 och kollar så att vi INTE får någon rest över, då är det ett giltigt personnummer.
-        if(sum % 10 == 0) {
-            //Om personnummret är giltigt returnerar vi ett JA! (true)
-            return true;
-        }
-        //Och om det inte är giltigt returnerar vi ett NEJ! (false).
-        return false;
+        //Vi returnerar true / false baserat på resultatet.
+        return (sum % 10 == 0);
     }
     /*
      * funktionen main är vårat ansikte utåt, den sköter kommunikationen med konsollen.
